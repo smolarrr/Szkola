@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'meow.ui'
+# Form implementation generated from reading ui file '/Users/smolar/Documents/Szkola/Desktopowe/ListEditor/meow.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.1
 #
@@ -170,7 +170,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Edytor Listy"))
         self.openBtn.setText(_translate("MainWindow", "Otwórz"))
         self.saveBtn.setText(_translate("MainWindow", "Zapisz"))
         self.duplicateBtn.setText(_translate("MainWindow", "Duplikuj"))
@@ -189,13 +189,3 @@ class Ui_MainWindow(object):
         self.textEdit_2.setPlaceholderText(_translate("MainWindow", "Wpisz tutaj swój tekst"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "TextArea"))
         self.label.setText(_translate("MainWindow", "Lista:"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec())

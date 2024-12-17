@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox, QListWidgetItem
-from meow import Ui_MainWindow
+from meow_ui import Ui_MainWindow
 
 class ListEditorApp(QMainWindow):
     def __init__(self):
