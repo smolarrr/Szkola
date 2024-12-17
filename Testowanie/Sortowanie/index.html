@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+    <title>Algorytmy sortowania</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <header>
+        <h1>Wybierz algorytm sortowania</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><button class="toggle" data-target="#bubble-sort">Bubble Sort</button></li>
+            <li><button class="toggle" data-target="#insertion-sort">Insertion Sort</button></li>
+            <li><button class="toggle" data-target="#selection-sort">Selection Sort</button></li>
+            <li><button class="toggle" data-target="#merge-sort">Merge Sort</button></li>
+            <li><button class="toggle" data-target="#quick-sort">Quick Sort</button></li>
+        </ul>
+    </nav>
+    
+    <!-- Sekcja dla Bubble Sort -->
+    <section id="bubble-sort" class="algorithm-section">
+        <div class="column steps">
+            <h2>Kroki Bubble Sort</h2>
+            <ol>
+                <li>Porównuj sąsiadujące elementy</li>
+                <li>Zamień miejscami, jeśli są w złej kolejności</li>
+                <li>Powtarzaj aż do końca listy</li>
+                <li>Po każdej iteracji największy element "wypływa" na koniec</li>
+                <li>Kontynuuj, aż cała lista będzie posortowana</li>
+            </ol>
+        </div>
+        <div class="column code">
+            <h2>Kod w Pythonie</h2>
+            <pre><code>
+1 def bubble_sort(arr):
+2     n = len(arr)
+3     for i in range(n):
+4         for j in range(0, n-i-1):
+5             if arr[j] > arr[j+1]:
+6                 arr[j], arr[j+1] = arr[j+1], arr[j]
+7     return arr
+            </code></pre>
+        </div>
+        <div class="column uml">
+            <h2>Diagram UML</h2>
+            <img src="images/bubble_sort_uml.png" alt="Bubble Sort UML" />
+        </div>
+    </section>
+    
+    <!-- Sekcja dla Insertion Sort -->
+    <section id="insertion-sort" class="algorithm-section">
+        <div class="column steps">
+            <h2>Kroki Insertion Sort</h2>
+            <ol>
+                <li>Weź drugi element w liście (indeks 1) jako element wstawiany</li>
+                <li>Porównuj go z poprzednimi elementami i przesuwaj je w prawo</li>
+                <li>Wstaw element na właściwe miejsce</li>
+                <li>Przejdź do kolejnego elementu i powtórz</li>
+            </ol>
+        </div>
+        <div class="column code">
+            <h2>Kod w Pythonie</h2>
+            <pre><code>
+1 def insertion_sort(arr):
+2     for i in range(1, len(arr)):
+3         key = arr[i]
+4         j = i-1
+5         while j >= 0 and key < arr[j]:
+6             arr[j+1] = arr[j]
+7             j -= 1
+8         arr[j+1] = key
+9     return arr
+            </code></pre>
+        </div>
+        <div class="column uml">
+            <h2>Diagram UML</h2>
+            <img src="images/insertion_sort_uml.png" alt="Insertion Sort UML" />
+        </div>
+    </section>
+    
+    <!-- Sekcja dla Selection Sort -->
+    <section id="selection-sort" class="algorithm-section">
+        <div class="column steps">
+            <h2>Kroki Selection Sort</h2>
+            <ol>
+                <li>Znajdź najmniejszy element w nieposortowanej części</li>
+                <li>Zamień go z pierwszym elementem tej części</li>
+                <li>Rozszerz obszar posortowany o jeden element</li>
+                <li>Powtarzaj, aż cała lista będzie posortowana</li>
+            </ol>
+        </div>
+        <div class="column code">
+            <h2>Kod w Pythonie</h2>
+            <pre><code>
+1 def selection_sort(arr):
+2     for i in range(len(arr)):
+3         min_idx = i
+4         for j in range(i+1, len(arr)):
+5             if arr[j] < arr[min_idx]:
+6                 min_idx = j
+7         arr[i], arr[min_idx] = arr[min_idx], arr[i]
+8     return arr
+            </code></pre>
+        </div>
+        <div class="column uml">
+            <h2>Diagram UML</h2>
+            <img src="images/selection_sort_uml.png" alt="Selection Sort UML" />
+        </div>
+    </section>
+    
+    <!-- Sekcja dla Merge Sort -->
+    <section id="merge-sort" class="algorithm-section">
+        <div class="column steps">
+            <h2>Kroki Merge Sort</h2>
+            <ol>
+                <li>Podziel listę na dwie połowy</li>
+                <li>Rekurencyjnie sortuj każdą połowę</li>
+                <li>Scal posortowane połowy</li>
+            </ol>
+        </div>
+        <div class="column code">
+            <h2>Kod w Pythonie</h2>
+            <pre><code>
+1 def merge_sort(arr):
+2     if len(arr) > 1:
+3         mid = len(arr)//2
+4         L = arr[:mid]
+5         R = arr[mid:]
+6         
+7         merge_sort(L)
+8         merge_sort(R)
+9 
+10        i = j = k = 0
+11        while i < len(L) and j < len(R):
+12            if L[i] < R[j]:
+13                arr[k] = L[i]
+14                i += 1
+15            else:
+16                arr[k] = R[j]
+17                j += 1
+18            k += 1
+19 
+20        while i < len(L):
+21            arr[k] = L[i]
+22            i += 1
+23            k += 1
+24 
+25        while j < len(R):
+26            arr[k] = R[j]
+27            j += 1
+28            k += 1
+29     return arr
+            </code></pre>
+        </div>
+        <div class="column uml">
+            <h2>Diagram UML</h2>
+            <img src="images/merge_sort_uml.png" alt="Merge Sort UML" />
+        </div>
+    </section>
+    
+    <!-- Sekcja dla Quick Sort -->
+    <section id="quick-sort" class="algorithm-section">
+        <div class="column steps">
+            <h2>Kroki Quick Sort</h2>
+            <ol>
+                <li>Wybierz pivot (np. ostatni element)</li>
+                <li>Podziel listę na elementy mniejsze i większe od pivota</li>
+                <li>Rekurencyjnie sortuj obie podlisty</li>
+            </ol>
+        </div>
+        <div class="column code">
+            <h2>Kod w Pythonie</h2>
+            <pre><code>
+1 def quick_sort(arr):
+2     if len(arr) <= 1:
+3         return arr
+4     pivot = arr[-1]
+5     left = [x for x in arr[:-1] if x <= pivot]
+6     right = [x for x in arr[:-1] if x > pivot]
+7     return quick_sort(left) + [pivot] + quick_sort(right)
+            </code></pre>
+        </div>
+        <div class="column uml">
+            <h2>Diagram UML</h2>
+            <img src="images/quick_sort_uml.png" alt="Quick Sort UML" />
+        </div>
+    </section>
+    
+    <footer>
+        <p>© 2024 5TP RS</p>
+    </footer>
+    
+    <script>
+    // Skrypt do pokazywania/ukrywania sekcji
+    document.addEventListener('DOMContentLoaded', function() {
+        var toggles = document.querySelectorAll('.toggle');
+        toggles.forEach(function(toggle) {
+            toggle.addEventListener('click', function() {
+                var targetSelector = this.getAttribute('data-target');
+                var targetEl = document.querySelector(targetSelector);
+                
+                // Schowaj wszystkie inne sekcje
+                var sections = document.querySelectorAll('.algorithm-section');
+                sections.forEach(function(sec){
+                    if(sec !== targetEl) {
+                        sec.style.display = 'none';
+                    }
+                });
+                
+                // Przełącz widoczność wybranej sekcji
+                if (targetEl.style.display === 'block') {
+                    targetEl.style.display = 'none';
+                } else {
+                    targetEl.style.display = 'block';
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
